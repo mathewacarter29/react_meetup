@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+//Route defines different paths for URL and which components should be loaded for each route
+import { Route, Routes } from "react-router-dom";
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupPage from "./pages/NewMeetup";
+import FavoritesPage from "./pages/Favorites";
+import Layout from "./components/layout/Layout";
 
 function App() {
+  //DOMAIN: localhost:3000
+  //After deploying - mypage.com
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      {/*Use the path prop to say which URL ending should be shown when the component is on the screen 
+      Routes JSX object ensures a component is only loaded when the URL matches the path prop exactly
+            without Routes, it would load every component whose path is INCLUDED in the URL */}
+      <Routes>
+        <Route path="/" element={<AllMeetupsPage />}></Route>
+        <Route path="/new-meetup" element={<NewMeetupPage />}></Route>
+        <Route path="/favorites" element={<FavoritesPage />}></Route>
+      </Routes>
+    </Layout>
   );
 }
 
